@@ -77,7 +77,7 @@ def sample_single_window(zs, labels, sampling_kwargs, level, prior, start, hps):
     sampling_kwargs['max_batch_size'] = max_batch_size
 
     # Update z with new sample
-    z_new = z[:,-new_tokens:].cpu()
+    z_new = z[:,-new_tokens:].cuda()
     del z
     del y
     zs[level] = t.cat([zs[level], z_new], dim=1)
